@@ -1,10 +1,7 @@
 package com.example.demo.entiteas;
 
-import com.example.demo.entiteas.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -19,13 +16,7 @@ public class MyUser  {
 
     private String name;
 
-    private boolean active;
-
     @Column(length = 1000)
     private String password;
-
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_table", joinColumns = @JoinColumn(name="user_id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles = new HashSet<>();
+    private String role; // ADMIN,USER
 }
