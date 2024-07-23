@@ -1,7 +1,9 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entiteas.MyUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -16,10 +18,18 @@ public class HomeController {
     public String adminPage() {
         return "adminInfo";
     }
-    @GetMapping("/user")
+    @GetMapping("/userinf")
     public String userPage() {
         return "userInfo";
     }
 
+    @GetMapping("/register/input")
+    public String getRegister() {
+        return "register";
+    }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }

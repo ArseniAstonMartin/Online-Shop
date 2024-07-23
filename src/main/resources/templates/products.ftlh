@@ -19,15 +19,15 @@
                 <a class="nav-link" href="/admin">Admin page</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user">User Page</a>
+                <a class="nav-link" href="/userinf">User Page</a>
             </li>
         </ul>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="btn btn-primary" href="/register">Register</a>
+                <a class="btn btn-primary" href="/register/input">Register</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-outline-primary me-2" href="/login">Login</a>
+                <a class="btn btn-outline-primary me-2" href="/start_login">Login</a>
             </li>
         </ul>
     </div>

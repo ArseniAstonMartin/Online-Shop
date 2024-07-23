@@ -9,23 +9,21 @@
 </head>
 <body>
 <h2>Registration</h2>
-<form action="/finish" th:object="${registerDTO}" method="POST">
-    <div>
-        <label>Email</label>
-        <input type="text" th:field="*{registerDTO.email}">
-    </div>
-    <div>
-        <label>Name</label>
-        <input type="text" th:field="*{registerDTO.name}">
-    </div>
-    <div>
-        <label>Password</label>
-        <input type="password" th:field="*{registerDTO.password}">
-    </div>
-    <div>
-        <button type="submit">Submit</button>
-    </div>
+<form action="/register/user" method="POST">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br><br>
 
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+
+    <label for="role">Role:</label><br>
+    <#--<input type="" id="role" name="role"><br><br>-->
+    <select name="role" id="role">
+        <option value="USER">USER</option>
+        <option value="ADMIN">ADMIN</option>
+    </select>
+
+    <input type="submit" value="Submit">
 </form>
 </body>
 </html>
