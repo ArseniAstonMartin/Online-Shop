@@ -27,11 +27,50 @@
                 <a class="btn btn-primary" href="/register/input">Register</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-outline-primary me-2" href="/start_login">Login</a>
+
+                <#if user.username??>
+                    <h3>Имя пользователя: <i>${user.username}</i></h3>
+                    <form action="/logout" method="post">
+                        <input type="submit" value="Выйти"/>
+                    </form>
+                <#else>
+                    <a class="btn btn-outline-primary me-2" href="/login">Login</a>
+                </#if>
             </li>
         </ul>
     </div>
 </nav>
-    <h1>THIS IS HOME PAGE</h1>
+    <h1 style="text-align: center">THIS IS HOME PAGE</h1>
+<form action="/product/search" method="get">
+    Title <input type="text" name="title"><br>
+    <input type="submit" value="Выполнить поиск"/><br>
+</form>
+
+<#list products as product>
+    <div>
+        <h3>${product.title}</h3>
+        <b>Price:</b> ${product.price} |
+        <a href="/product/${product.id}">See more</a>;
+        <br>
+    </div>
+</#list>
+<#if user.username??>
+    <h3>
+        Create new product
+        <form action="/product/create" method="post" enctype="multipart/form-data">
+            Title <input type="text" name="title"><br>
+            description <input type="text" name="description"><br>
+            price <input type="number" name="price"><br>
+            city <input type="text" name="city"><br>
+            author <input type="text" name="author"><br>
+            preview <input type="file" name="preview"><br>
+            first image <input type="file" name="image0"><br>
+            second image <input type="file" name="image1"><br>
+            <#--<input type = "hidden" name = "_csrf" value = "${csrf.token}">-->
+            <input type="submit" value="Добавить товар"/><br>
+        </form>
+    </h3>
+</#if>
+
 </body>
 </html>
