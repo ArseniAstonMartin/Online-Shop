@@ -18,9 +18,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/admin">Admin page</a>
             </li>
+            <#if user.username??>
             <li class="nav-item">
-                <a class="nav-link" href="/userinf">User Page</a>
+                <a class="nav-link" href="/user/${user.id}">User Page</a>
             </li>
+            </#if>
         </ul>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -62,7 +64,6 @@
             description <input type="text" name="description"><br>
             price <input type="number" name="price"><br>
             city <input type="text" name="city"><br>
-            author <input type="text" name="author"><br>
             preview <input type="file" name="preview"><br>
             first image <input type="file" name="image0"><br>
             second image <input type="file" name="image1"><br>

@@ -15,7 +15,7 @@ import java.util.Optional;
 public class CSRUserService {
     private final MyUserRepository repository;
 
-    MyUser findByUsername(String username) {
+    public MyUser findByUsername(String username) {
         Optional<MyUser> user = repository.findByUsername(username);
         if (user.isPresent()) {
             MyUser usObj = user.get();

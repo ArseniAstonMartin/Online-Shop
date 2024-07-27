@@ -18,13 +18,17 @@
     <b>Description:</b> ${product.description}<br>
     <b>Price:</b> ${product.price} byn.<br>
     <b>City:</b> ${product.city}<br>
-    <b>Poster:</b> ${product.user.username}<br>
+    <b>Poster:</b> <a href="/user/${product.user.id}">${product.user.username}</a><br>
 </div>
-<form action="/product/delete/${product.id}" method="post">
-    <input type="submit" value="delete product">
-</form>
-<form action="/product/update/${product.id}" method="get">
-    <input type="submit" value="update product">
-</form>
+<#if currentUserId??>
+    <#--<#if product.user.id == currentUserId>-->
+        <form action="/product/delete/${product.id}" method="post">
+        <input type="submit" value="delete product">
+        </form>
+        <form action="/product/update/${product.id}" method="get">
+            <input type="submit" value="update product">
+        </form>
+    <#--</#if>-->
+</#if>
 </body>
 </html>

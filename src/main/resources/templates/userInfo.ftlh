@@ -8,6 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-<h1>THIS IS USER PAGE</h1>
+<h1 style="text-align: center">THIS IS USER PAGE</h1><br>
+<h2>Username: ${user.username}</h2>
+<h3>This is his products</h3>
+<#list products as product>
+    <div>
+        <h3>${product.title}</h3>
+        <b>Price:</b> ${product.price}
+        <br>
+    </div>
+</#list>
 </body>
 </html>

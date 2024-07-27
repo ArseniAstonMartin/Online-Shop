@@ -28,4 +28,9 @@ public class MyUserDetailsService implements UserDetailsService {
         if (role == null || role.isBlank()) { return new String[]{"USER"}; }
         return role.split(",");
     }
+
+    private String[] getAuthorities (String authority) {
+        if (authority == null || authority.isBlank()) { return new String[]{"USER"}; }
+        return authority.split(",");
+    }
 }
