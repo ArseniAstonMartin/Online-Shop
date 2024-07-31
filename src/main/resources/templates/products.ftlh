@@ -27,7 +27,7 @@
                 <a class="btn btn-primary" href="/register/input">Register</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-outline-primary me-2" href="/start_login">Login</a>
+                <a class="btn btn-outline-primary me-2" href="/login">Login</a>
             </li>
         </ul>
     </div>
