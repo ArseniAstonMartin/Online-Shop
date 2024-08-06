@@ -9,16 +9,15 @@
 </head>
 <body>
 <h2>Registration</h2>
-<form action="/register/user" method="POST">
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username"><br><br>
+<form action="/register/saveUser" method="POST">
+    <label for="name">Username:</label><br>
+    <input type="text" id="name" name="name"><br><br>
 
     <label for="password">Password:</label><br>
     <input type="password" id="password" name="password"><br><br>
 
     <label for="role">Role:</label><br>
-    <#--<input type="" id="role" name="role"><br><br>-->
-    <select name="role" id="role">
+    <select id="role" name="role">
         <option value="USER">USER</option>
         <option value="ADMIN">ADMIN</option>
     </select>

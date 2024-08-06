@@ -56,7 +56,7 @@ public class ProductService {
     }
 
     public void save(Principal principal, Product product, Image image1, Image image2, Image image3) throws IOException, NoPreviewImageException {
-        product.setUser(getUserByPrincipal(principal));
+        product.setUser(userService.getUserByPrincipal(principal));
         if (image1.getSize() != 0) {
             image1.setPreviewImage(true);
             product.addImageToProduct(image1);
@@ -73,11 +73,6 @@ public class ProductService {
         Product productFromDB = productRepository.save(product);
         productFromDB.setPreviewImageId(productFromDB.getImageList().get(0).getId());
         productRepository.save(productFromDB);
-    }
-
-    public MyUser getUserByPrincipal(Principal principal) {
-        if (principal == null) return new MyUser();
-        return userService.findByUsername(principal.getName());
     }
 
     public Image toImage(MultipartFile file) throws IOException {

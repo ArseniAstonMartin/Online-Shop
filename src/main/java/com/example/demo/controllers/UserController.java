@@ -15,10 +15,17 @@ public class UserController {
     private final CSRUserService userService;
     private final ProductService productService;
 
-    @GetMapping("/user/{user}")
-    public String userInfo(@PathVariable MyUser user, Model model) {
-        model.addAttribute("user", user);
-        model.addAttribute("products", user.getProducts());
+    @GetMapping("/user/{id}")
+    public String userInfo(@PathVariable long id, Model model) {
+        /*model.addAttribute("user", );
+        model.addAttribute("products", user.getProducts());*/
         return "userInfo";
     }
+
+    @GetMapping("/user/{id}/basket")
+    public String getBasket(@PathVariable long id, Model model) {
+        /*model.addAttribute("basketProducts", productService.getBasket());*/
+        return "basket";
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.services.CSRUserService;
 import com.example.demo.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,29 +14,23 @@ import java.security.Principal;
 public class HomeController {
 
     private final ProductService productService;
+    private final CSRUserService userService;
 
     @GetMapping("/")
     public String homePage(Model model, Principal principal) {
         model.addAttribute("products", productService.findAll());
-        model.addAttribute("user", productService.getUserByPrincipal(principal));
-        return "products";
+        model.addAttribute("user", userService.getUserByPrincipal(principal));
+        return "HomePage";
     }
-    @GetMapping("/admin")
-    public String adminPage() {
-        return "adminInfo";
+    @GetMapping("/admin/home")
+    public String adminPage(Model model, Principal principal) {
+        model.addAttribute("userObject", userService.findByName(principal.getName()));
+        return "AdminHome";
     }
-    @GetMapping("/userinf")
-    public String userPage() {
-        return "userInfo";
-    }
-
-    @GetMapping("/register/input")
-    public String getRegister() {
-        return "register";
+    @GetMapping("/user/home")
+    public String userPage(Model model, Principal principal) {
+        model.addAttribute("userObject", userService.findByName(principal.getName()));
+        return "UserHome";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
 }

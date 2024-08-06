@@ -28,12 +28,9 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((auth) -> {
-                    auth.requestMatchers("/", "/register/**").permitAll();
-                    auth.requestMatchers("/user/{user}").permitAll();
-                    auth.requestMatchers("/product/{id}", "/product/search", "/image/**").permitAll();
-                    auth.requestMatchers("/product/**").hasRole("USER");
-                    auth.requestMatchers("/product/update", "/product/delete").hasAuthority("operateOwn");
-                    auth.requestMatchers("/admin").hasRole("ADMIN");
+                    auth.requestMatchers("/**").permitAll();
+                    auth.requestMatchers("/user/**").hasAuthority("USER");
+                    auth.requestMatchers("/admin/**").hasAuthority("ADMIN");
                     auth.anyRequest().authenticated();
                 })
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)

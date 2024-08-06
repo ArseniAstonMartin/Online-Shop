@@ -15,18 +15,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/admin">Admin page</a>
-            </li>
             <#if user.username??>
             <li class="nav-item">
-                <a class="nav-link" href="/user/${user.id}">User Page</a>
+                <a class="nav-link" href="/${user.role}/${user.id}">User Page</a>
             </li>
             </#if>
         </ul>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="btn btn-primary" href="/register/input">Register</a>
+                <a class="btn btn-primary" href="/register/inputPage">Register</a>
             </li>
             <li class="nav-item">
 
@@ -56,22 +53,7 @@
         <br>
     </div>
 </#list>
-<#if user.username??>
-    <h3>
-        Create new product
-        <form action="/product/create" method="post" enctype="multipart/form-data">
-            Title <input type="text" name="title"><br>
-            description <input type="text" name="description"><br>
-            price <input type="number" name="price"><br>
-            city <input type="text" name="city"><br>
-            preview <input type="file" name="preview"><br>
-            first image <input type="file" name="image0"><br>
-            second image <input type="file" name="image1"><br>
-            <#--<input type = "hidden" name = "_csrf" value = "${csrf.token}">-->
-            <input type="submit" value="Добавить товар"/><br>
-        </form>
-    </h3>
-</#if>
+
 
 </body>
 </html>

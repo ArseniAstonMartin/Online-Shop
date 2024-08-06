@@ -1,27 +1,35 @@
 package com.example.demo.controllers;
 
 import com.example.demo.entiteas.MyUser;
+import com.example.demo.entiteas.UserRegistrationRequest;
 import com.example.demo.services.CSRUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
-@RestController
+@Controller
 public class RegistrationController {
     @Autowired
     private CSRUserService userService;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/register/user")
-    public RedirectView postRegister(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(name = "role") String role, Model model) {
-        MyUser user = new MyUser();
-        user.setRole(role);
-        user.setPassword(passwordEncoder.encode(password));
-        user.setUsername(username);
-        MyUser m = userService.saveUser(user);
-        return new RedirectView("/login");
+    @PostMapping("/register/saveUser")
+    public String postRegister(UserRegistrationRequest user) {
+        var newUser = new MyUser(user);
+        newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        userService.saveUser(newUser);
+        return "redirect:/login/inputPage";
+    }
+
+    @GetMapping("/register/inputPage")
+    public String getRegisterInputPage() {
+        return "RegistrationPage";
+    }
+
+    @GetMapping("/login/inputPage")
+    public String getLoginInputPage() {
+        return "LoginPage";
     }
 }

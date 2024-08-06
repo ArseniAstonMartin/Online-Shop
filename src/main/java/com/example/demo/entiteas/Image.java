@@ -28,8 +28,8 @@ public class Image {
     @Override
     public String toString() {
         return "Image {" +
-                "\n\tid=" + id +
-                "\n\t, name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name +
                 '}';
     }
 }

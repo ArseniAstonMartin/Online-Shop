@@ -47,15 +47,7 @@ public class ProductController {
         List<Image> iml = prod.getImageList();
         model.addAttribute("product", prod);
         model.addAttribute("preview", iml.get(0));
-        MyUser user;
-        if (principal != null) {
-            user = userService.findByUsername(principal.getName());
-            model.addAttribute("currentUserId", user.getId());
-
-        }
-        int l = iml.size();
-        if (l>1) model.addAttribute("image1", iml.get(1));
-        if (l > 2) model.addAttribute("image2", iml.get(2));
+        model.addAttribute("images", iml.subList(1, iml.size()));
         return "info";
     }
 
@@ -83,7 +75,6 @@ public class ProductController {
         return "redirect:/";
     }
 
-    @PreAuthorize("T(com.example.demo.controllers.ProductController).getHasAccess(#id, #principal)")
     @GetMapping("/product/update/{id}")
     public String updateProduct(@PathVariable long id, Model model, Principal principal) {
         Product pr = productService.findById(id);
